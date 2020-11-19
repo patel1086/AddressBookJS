@@ -135,6 +135,11 @@ function getPersonByCity(contactArray,cityName){
 function getPersonByState(contactArray,stateName){
     contactArray.filter(name => name.state == stateName).forEach(contact=>console.log(contact.toString()));
 }
+
+function isPresent(contactArray,name,stateName){
+    let contactSearched=contactArray.filter(a => a.state == stateName).find(b => b.firstName=== name);
+    console.log(contactSearched.toString());
+}
 try {
     let contact = new Contact('Jitendra', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9636638082', 'jitendra@gmail.com');
     let contact1 = new Contact('Ramnarayan', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9571908082', 'rampatel@gmail.com');
@@ -148,6 +153,7 @@ try {
     countContacts(addressBook);
     getPersonByCity(addressBook,"Jodhpur");
     getPersonByState(addressBook,"Rajasthan");
+    isPresent(addressBook,"Jitendra","Rajasthan");
     console.log(addressBook);
 
 } catch (e) {
