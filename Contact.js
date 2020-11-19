@@ -136,9 +136,38 @@ function getPersonByState(contactArray,stateName){
     contactArray.filter(name => name.state == stateName).forEach(contact=>console.log(contact.toString()));
 }
 
-function isPresent(contactArray,name,stateName){
+function isPresentInState(contactArray,name,stateName){
     let contactSearched=contactArray.filter(a => a.state == stateName).find(b => b.firstName==name);
     console.log(contactSearched.toString());
+}
+
+function isPresentInCity(contactArray, name, cityName) {
+    let contactSearched=contactArray.filter(a => a.city == cityName).find(b => b.firstName==name);
+    console.log(contactSearched.toString());
+}
+
+//Function to get count of persons by city
+function getCountByCity(contactArray, cityName) {
+    let count = contactArray.filter(contact => contact.city == cityName).reduce((a, b) => a.concat(b), []).length;
+    console.log("Number of contacts living in this city are: " + count);
+}
+//Function to get count of persons by state
+function getCountByState(contactArray, stateName) {
+    let count = contactArray.filter(contact => contact.state == stateName).reduce((a, b) => a.concat(b), []).length;
+    console.log("Number of contacts living in this state are: " + count);
+}
+//Function to sort on the basis of names
+function sortedContacts(contactArray) {
+    contactArray.sort(function (a, b) {
+        var nameA = a.firstName.toLowerCase();
+        var nameB = b.firstName.toLowerCase();
+        if (nameA < nameB)
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0
+    });
+    contactArray.forEach(emp => console.log(emp.toString()));
 }
 try {
     let contact = new Contact('Jitendra', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9636638082', 'jitendra@gmail.com');
@@ -153,7 +182,10 @@ try {
     countContacts(addressBook);
     getPersonByCity(addressBook,"Jodhpur");
     getPersonByState(addressBook,"Rajasthan");
-    isPresent(addressBook,"Radheshyam","Rajasthan");
+    isPresentInState(addressBook,"Radheshyam","Rajasthan");
+    isPresentInCity(addressBook,"Radheshyam","Jodhpur");
+    getCountByCity(addressBook, "Jodhpur");
+    getCountByState(addressBook, "Rajasthan");
     console.log(addressBook);
 
 } catch (e) {
