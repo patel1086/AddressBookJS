@@ -33,8 +33,8 @@ class Contact {
          return this._address;
     }
     set address(address) {
-        let regName = RegExp('^[A-Za-z0-9]{4,}$');
-        if (regName.test(address)) {
+        let regAddress = RegExp('^[A-Za-z0-9]{4,}$');
+        if (regAddress.test(address)) {
             this._address = address;
         }
         else throw 'Incorrect address';
@@ -43,8 +43,8 @@ class Contact {
         return this._city;
     }
     set city(city) {
-        let regName = RegExp('^[A-Za-z]{4,}$');
-        if (regName.test(city)) {
+        let regCity = RegExp('^[A-Za-z]{4,}$');
+        if (regCity.test(city)) {
             this._city = city;
         }
         else throw 'Incorrect city';
@@ -53,8 +53,8 @@ class Contact {
         return this._state; 
     }
     set state(state) {
-        let regName = RegExp('^[A-Za-z]{4,}$');
-        if (regName.test(state)) {
+        let regState = RegExp('^[A-Za-z]{4,}$');
+        if (regState.test(state)) {
             this._state = state;
         }
         else throw 'Incorrect state';
@@ -63,8 +63,8 @@ class Contact {
         return this._zip; 
     }
     set zip(zip) {
-        let regEx = RegExp('^\\d{3}(\\s{0,1}\\d{3})$');
-        if (regEx.test(zip)) {
+        let regZip = RegExp('^\\d{3}(\\s{0,1}\\d{3})$');
+        if (regZip.test(zip)) {
             this._zip = zip;
         }
         else throw 'Incorrect zip';
@@ -75,8 +75,8 @@ class Contact {
         return this._number; 
     }
     set number(number) {
-        let regEx = RegExp('^\\d{2}(\\s{1}\\d{10})$');
-        if (regEx.test(number)) {
+        let regNumber = RegExp('^\\d{2}(\\s{1}\\d{10})$');
+        if (regNumber.test(number)) {
             this._number = number;
         }
         else throw 'Incorrect number';
@@ -86,8 +86,8 @@ class Contact {
         return this._email; 
     }
     set email(email) {
-        let regEx = RegExp('^[a-zA-Z]+([._+-]{0,1}[a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[(com)|(co)|(net)]+(?:\\.[a-z]{2,}){0,1}$');
-        if (regEx.test(email)) {
+        let regEmail = RegExp('^[a-zA-Z]+([._+-]{0,1}[a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[(com)|(co)|(net)]+(?:\\.[a-z]{2,}){0,1}$');
+        if (regEmail.test(email)) {
             this._email = email;
         }
         else throw 'Incorrect email';
@@ -98,9 +98,21 @@ class Contact {
     }
 
 }
+
+//Function to add name in addressBook
+function addName(addressBook, contact) {
+    addressBook.push(contact);
+}
 try {
-    let contact = new Contact('Jitendra', 'Patel', 'Lunawas Khara', 'Jodhpur', 'Rajasthan', 342014, '91 9636638082', 'jitendra@gmail.com');
-    console.log(contact.toString());
+    let contact = new Contact('Jitendra', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9636638082', 'jitendra@gmail.com');
+    let contact1 = new Contact('Ramnarayan', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9571908082', 'rampatel@gmail.com');
+   // console.log(contact.toString());
+
+    let addressBook=new Array();
+    addName(addressBook, contact);
+    addName(addressBook, contact1);
+    console.log(addressBook);
+
 } catch (e) {
     console.error(e);
 }
