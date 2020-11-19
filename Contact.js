@@ -94,7 +94,7 @@ class Contact {
 
     }
     toString() {
-        return '\nFirstName: ' + this.firstName + ' LastName: ' + this.lastName + ' Address: ' + this.address + ' City: ' + this.city + ' State : ' + this.state + ' Zip: ' + this.zip + ' Number: ' + this.number + 'Email: ' + this.email;
+        return '\nFirstName: ' + this.firstName + ' LastName: ' + this.lastName + ' Address: ' + this.address + ' City: ' + this.city + ' State : ' + this.state + ' Zip: ' + this.zip + ' Number: ' + this.number + ' Email: ' + this.email;
     }
 
 }
@@ -137,7 +137,7 @@ function getPersonByState(contactArray,stateName){
 }
 
 function isPresent(contactArray,name,stateName){
-    let contactSearched=contactArray.filter(a => a.state == stateName).find(b => b.firstName=== name);
+    let contactSearched=contactArray.filter(a => a.state == stateName).find(b => b.firstName==name);
     console.log(contactSearched.toString());
 }
 try {
@@ -153,7 +153,7 @@ try {
     countContacts(addressBook);
     getPersonByCity(addressBook,"Jodhpur");
     getPersonByState(addressBook,"Rajasthan");
-    isPresent(addressBook,"Jitendra","Rajasthan");
+    isPresent(addressBook,"Radheshyam","Rajasthan");
     console.log(addressBook);
 
 } catch (e) {
