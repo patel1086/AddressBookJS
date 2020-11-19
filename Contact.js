@@ -126,6 +126,15 @@ function countContacts(contactArray){
     let count= contactArray.reduce((a, b) => a.concat(b), []).length;
     console.log("Number of contacts is: "+count);
  }
+
+ //Function to get contacts by city name
+function getPersonByCity(contactArray,cityName){
+    contactArray.filter(name => name.city == cityName).forEach(contact=>console.log(contact.toString()));
+}
+//Function to get contacts by state name
+function getPersonByState(contactArray,stateName){
+    contactArray.filter(name => name.state == stateName).forEach(contact=>console.log(contact.toString()));
+}
 try {
     let contact = new Contact('Jitendra', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9636638082', 'jitendra@gmail.com');
     let contact1 = new Contact('Ramnarayan', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9571908082', 'rampatel@gmail.com');
@@ -137,6 +146,8 @@ try {
     updateName(addressBook, "Jitendra", "Radheshyam");
     deleteName(addressBook,'Ramnarayan');
     countContacts(addressBook);
+    getPersonByCity(addressBook,"Jodhpur");
+    getPersonByState(addressBook,"Rajasthan");
     console.log(addressBook);
 
 } catch (e) {
