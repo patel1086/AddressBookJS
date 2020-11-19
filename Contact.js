@@ -101,6 +101,12 @@ class Contact {
 
 //Function to add name in addressBook
 function addName(addressBook, contact) {
+    for(contacts in addressBook){
+        if(contacts.firstName==contact.firstName){
+            throw 'Name already taken';
+
+        }
+    }
     addressBook.push(contact);
 }
 
