@@ -151,13 +151,16 @@ function getCountByCity(contactArray, cityName) {
     let count = contactArray.filter(contact => contact.city == cityName).reduce((a, b) => a.concat(b), []).length;
     console.log("Number of contacts living in this city are: " + count);
 }
+
 //Function to get count of persons by state
 function getCountByState(contactArray, stateName) {
     let count = contactArray.filter(contact => contact.state == stateName).reduce((a, b) => a.concat(b), []).length;
     console.log("Number of contacts living in this state are: " + count);
 }
+
 //Function to sort on the basis of names
-function sortedContacts(contactArray) {
+function sortedContacts(contactArray,type) {
+    if(type=='fisrtName'){
     contactArray.sort(function (a, b) {
         var nameA = a.firstName.toLowerCase();
         var nameB = b.firstName.toLowerCase();
@@ -169,11 +172,36 @@ function sortedContacts(contactArray) {
     });
     contactArray.forEach(emp => console.log(emp.toString()));
 }
+else if(type=="City"){
+    contactArray.sort(function (a, b) {
+        var nameA = a.city.toLowerCase(), nameB = b.city.toLowerCase()
+        if (nameA < nameB)
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0
+    });
+    contactArray.forEach(emp => console.log(emp.toString()));
+}
+else if(type=="State"){
+    contactArray.sort(function (a, b) {
+        var nameA = a.state.toLowerCase(), nameB = b.state.toLowerCase()
+        if (nameA < nameB)
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0
+    });
+    contactArray.forEach(emp => console.log(emp.toString()));
+}
+else{
+    contactArray.sort(function (a, b) { return a.zip - b.zip });
+    contactArray.forEach(emp => console.log(emp.toString()));
+}
+}
 try {
     let contact = new Contact('Jitendra', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9636638082', 'jitendra@gmail.com');
     let contact1 = new Contact('Ramnarayan', 'Patel', 'LunawasKhara', 'Jodhpur', 'Rajasthan', 342014, '91 9571908082', 'rampatel@gmail.com');
-   // console.log(contact.toString());
-
     let addressBook=new Array();
     addName(addressBook, contact);
     addName(addressBook, contact1);
@@ -186,6 +214,10 @@ try {
     isPresentInCity(addressBook,"Radheshyam","Jodhpur");
     getCountByCity(addressBook, "Jodhpur");
     getCountByState(addressBook, "Rajasthan");
+    sortedContacts(addressBook,"firstName");
+    sortedContacts(addressBook,"City");
+    sortedContacts(addressBook,"State");
+    sortedContacts(addressBook,"Zip");
     console.log(addressBook);
 
 } catch (e) {
